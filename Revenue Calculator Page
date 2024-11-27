@@ -1,0 +1,56 @@
+package fitpeo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Fitpeo {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver ed=new ChromeDriver();
+		ed.get("https://fitpeo.com/");
+		WebElement rt=ed.findElement(By.xpath("//header/div[1]/div[2]/button[1]/*[1]"));
+		rt.click();
+		WebElement wd=ed.findElement(By.xpath("//span[contains(text(),'Revenue Calculator')]"));
+		wd.click();
+		
+		JavascriptExecutor js=(JavascriptExecutor)ed;
+		
+		js.executeScript("window.scroll(0,450)");
+		
+		WebElement aw=ed.findElement(By.xpath("//body/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/span[1]/span[3]"));
+		Actions action = new Actions(ed);
+		Thread.sleep(2000);
+		action.dragAndDropBy(aw, 94, 0);
+		action.perform();
+		WebElement cs=ed.findElement(By.xpath("//input[@id=':R57alklff9da:']"));
+		cs.click();
+		cs.sendKeys(Keys.BACK_SPACE);
+		cs.sendKeys(Keys.BACK_SPACE);
+		cs.sendKeys(Keys.BACK_SPACE);
+		cs.sendKeys("560");
+		Thread.sleep(2000);
+		js.executeScript("window.scroll(0,1250)");
+		
+		WebElement ch1=ed.findElement(By.xpath("//body/div[1]/div[1]/div[2]/div[1]/label[1]/span[1]/input[1]"));
+		ch1.click();
+		WebElement ch2=ed.findElement(By.xpath("(//input[contains(@class,'PrivateSwitchBase-input css-1m9pwf3')])[2]"));
+		ch2.click();
+		WebElement ch3=ed.findElement(By.xpath("(//input[contains(@class,'PrivateSwitchBase-input css-1m9pwf3')])[3]"));
+		ch3.click();
+		WebElement ch4=ed.findElement(By.xpath("(//input[contains(@class,'PrivateSwitchBase-input css-1m9pwf3')])[8]"));
+		ch4.click();
+		Thread.sleep(2000);
+		js.executeScript("window.scroll(0,400)");
+	
+	}
+
+}
